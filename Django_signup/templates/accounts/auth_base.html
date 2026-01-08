@@ -1,0 +1,63 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}인증{% endblock %} | Travel JC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body class="auth-body">
+  <div class="auth-bg" aria-hidden="true"></div>
+  <main class="auth-shell">
+    <section class="auth-hero" aria-hidden="true">
+      <div class="auth-hero-inner">
+        <p class="eyebrow">Travel JC</p>
+        <h1>{% block hero_title %}여행의 시작을 더 빠르게{% endblock %}</h1>
+        <p class="hero-copy">{% block hero_copy %}관광지 키오스크와 연결된 계정으로 맞춤 추천을 받으세요.{% endblock %}</p>
+        <div class="hero-metrics">
+          <div class="metric">
+            <span class="metric-value">120+</span>
+            <span class="metric-label">추천 코스</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">24H</span>
+            <span class="metric-label">연동 서비스</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">1분</span>
+            <span class="metric-label">빠른 설정</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <form class="auth-card" method="post">
+        {% csrf_token %}
+        <header class="card-header">
+          <p class="card-kicker">Travel account</p>
+          <h2>{% block form_title %}로그인{% endblock %}</h2>
+          <p class="card-subtitle">{% block form_subtitle %}이메일과 비밀번호를 입력하세요.{% endblock %}</p>
+        </header>
+
+        <div class="form-grid">
+          {% block form_fields %}{% endblock %}
+        </div>
+
+        <div class="form-actions">
+          {% block form_actions %}{% endblock %}
+        </div>
+
+        <div class="form-meta">
+          {% block form_footer %}{% endblock %}
+          {% block form_note %}{% endblock %}
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
